@@ -1,5 +1,5 @@
 .principal {
-    color: rgb(15, 228, 61);
+    animation: 3s linear 1s infinite running slidein;
+    color: rgb(91, 157, 218);
     font-size: 40px;
-    animation-direction: normal;
   }
