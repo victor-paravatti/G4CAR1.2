@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    G4car:Login
+{% endblock %}
+
+
+{% block main %}
+    <h3>Registro de usuario </h3>
+    <form align='center' method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button tipe="submit">Registrar</button>
+    </form>
+
+{% endblock %}
