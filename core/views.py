@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.urls.base import reverse_lazy
+from core.models import Cliente, Veiculo
 
 
 def home(request):
@@ -22,7 +23,9 @@ def cadastro_cliente(request):
 
 @login_required
 def listagem_clientes(request):
-    return render(request, "core/listagem_clientes.html")
+    clientes = Cliente.objects.all()
+    contexto = {'clientes': clientes}
+    return render(request, "core/listagem_clientes.html", contexto)
 
 
 @login_required

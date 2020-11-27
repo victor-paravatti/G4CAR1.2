@@ -1,10 +1,27 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     listagem-Clientes
 {% endblock %}
 
 {% block main %}
-    ---listagem Clientes---
- 
+    <h3>---listagem Clientes---</h3>
+    {% for cliente in clientes %}
+        Nome: {{cliente.nome}} <br>
+        Endereço: {{cliente.endereco}} <br>
+        Complemento: {{cliente.complemento}} <br>
+        Bairro: {{cliente.bairro}} <br>
+        Cidade: {{cliente.cidade}} <br>
+        Cep: {{cliente.cep}} <br>
+        Telefone: {{cliente.telefone}} <br>
+        Email: {{cliente.email}} <br>
+        {% if cliente.foto %}
+            <img src="{{ cliente.foto.url }}" width= "100"> <br>
+        {% else %}
+            <img src="{% static 'img/ge.png' %}" width= "100"> <br>
+        {% endif %}
+
+    __________________________________________________________<br>
+    {% endfor %}
 {% endblock %}
