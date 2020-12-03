@@ -1,9 +1,36 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
-    listagem-veiculos
+    Listagem-veiculos
 {% endblock %}
 
 {% block main %}
-    ---listagem Veiculos---
+    <h3>Lista de veiculos</h3>
+
+    {% for veic in veiculos %}
+        Fabricante: {{ veic.fabricante }} <br>
+        Modelo: {{ veic.modelo }} <br>
+
+        {% if veic.cor %}
+            Cor: {{ veic.cor }} <br>
+        {% else %}
+            cor: <br>
+        {% endif %}
+
+        {% if veic.ano %}
+            Ano: {{ veic.ano }} <br>
+        {% else %}
+            Ano: <br>
+        {% endif %}
+
+        Proprietário: {{ veic.id_cliente }} <br>
+
+        {% if veic.foto %}
+            <img src="{{ veic.foto.url }}" width="300">
+        {% else %}
+            <img src="{% static 'imagens/veiculo_generico.jpg'%}" width="200">
+        {% endif %}
+
+    {% endfor %}
 {% endblock %}

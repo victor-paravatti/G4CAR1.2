@@ -5,5 +5,15 @@
 {% endblock %}
 
 {% block main %}
-    ---cadastro cliente---
+    <h3>Cadastro do Veiculo</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Salvar</button> &nbsp;
+        <button type="button" onclick="location.href='/'">Cancelar</button>
+
+    </form>
+
+
+
 {% endblock %}
