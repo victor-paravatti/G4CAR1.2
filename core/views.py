@@ -20,7 +20,7 @@ class Registrar(generic.CreateView):
 @login_required
 def cadastro_cliente(request):
     form = FormCliente(request.POST or None)
-    contexto = {'form': form}
+    contexto = {'form': form, 'acao':'Cadastro de Cliente', 'titulo':'Cadastar'}
     if form.is_valid():
         form.save()
         return redirect('url_listagem_clientes')
@@ -51,3 +51,24 @@ def listagem_veiculos(request):
     veiculos = Veiculo.objects.all()
     contexto = {'veiculos': veiculos}
     return render(request, "core/listagem_veiculos.html", contexto)
+
+
+@login_required
+def atualiza_cliente(request, id):
+    obj = Cliente.objects.get(id=id) 
+    form = FormCliente(request.POST or None, request.FILES or None, instance=obj)
+    contexto = {'form': form, 'acao':'Atualiza', 'titulo':'Atualiza'}
+    if form.is_valid():
+        form.save()
+        return redirect('url_listagem_clientes')
+    else:
+        return render(request, "core/cadastro_cliente.html", contexto)
+
+
+@login_required
+def exclui_cliente(request, id):
+    obj = Cliente.objects.get(id=id)
+    if request.POST:
+        obj.delete()
+        return redirect('url_listagem_clientes')
+    return render(request, 'core/comfirma_exclusao.html')

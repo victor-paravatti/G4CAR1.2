@@ -8,7 +8,8 @@
 {% block main %}
     <h3>---listagem Clientes---</h3>
     {% for cliente in clientes %}
-        Nome: {{cliente.nome}} <br>
+        Nome: {{cliente.nome}}  &nbsp; |<a href="{% url 'url_atualiza_cliente' cliente.id  %}"> Editar </a>  &nbsp; 
+                                        <a href="{% url 'url_exclui_cliente' cliente.id  %}"> Excluir </a> <br>
         Endereço: {{cliente.endereco}} <br>
         Complemento: {{cliente.complemento}} <br>
         Bairro: {{cliente.bairro}} <br>
@@ -24,4 +25,6 @@
 
     __________________________________________________________<br>
     {% endfor %}
+<br><br>
+    <a href="/">Home</a>
 {% endblock %}
