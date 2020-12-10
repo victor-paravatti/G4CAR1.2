@@ -39,11 +39,38 @@ class Veiculo(models.Model):
 
 class Parametro(models.Model):
     descricao = models.CharField(max_length=20)
-    valor = models.DecimalField(max_digits=7)
+    valor = models.DecimalField(max_digits=7, decimal_places=2)
 
     def __str__(self):
         return self.descricao
 
     class Meta:
         verbose_name_plural = "Parâmetros"
-        
+
+
+class Movimento(models.Model):
+    data_entrada = models.DateTimeField(auto_now_add=None)
+    data_saida = models.DateTimeField(auto_now_add=None, blank=True, null=True)
+    id_veiculo = models.ForeignKey('Veiculo', on_delete=models.CASCADE)
+    valor_hora = models.ForeignKey('Parametro', on_delete=models.CASCADE)
+    total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+
+    def __str__(self):
+        f'{self.id} - {self.data_entrada} - {self.id_veiculo.placa}'
+
+    class Meta:
+        verbose_name_plural = 'Movimentos'
+
+
+class Mensalista(models.Model):
+    observacao = models.TextField()
+    mensalidade = models.ForeignKey('Parametro', on_delete=models.CASCADE)
+    id_veiculo = models.ForeignKey('Veiculo', on_delete=models.CASCADE)
+
+    def __str__(self):
+        f'{self.id_veiculo} - {self.id_veiculo.modelo} - ({self.mensalidade.valor})'
+
+    class Meta:
+        verbose_name_plural = 'Mensalistas'
+    
+    
