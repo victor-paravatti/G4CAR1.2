@@ -139,3 +139,43 @@ def exclui_parametro(request, id):
             return render(request, 'core/confirma_exclusao.html', contexto)
     except Exception as erro:
         return redirect('url_listagem_parametros')
+
+
+@login_required()
+def cadastro_movimento(request):
+    if request.user.is_staff:
+        form = FormMovimento(request.POST or None)
+        contexto = {'form': form, 'titulo': 'Cad:Movimento', 'acao': 'Cadastro de Movimento'}
+        if form.is_valid():
+            form.save()
+            return redirect('url_listagem_movimento')
+
+        return render(request, "core/cadastro_movimento.html", contexto)
+    else:
+        contexto = {'erro': 'Voçe não tem permição procure o gerente'}
+        return render(request, 'core/erro.html', contexto)
+
+
+@login_required
+def listagem_movimento(request):
+    dados = Movimento.objects.all()
+    contexto = {'movimento': dados}
+    return render(request, "core/listagem_movimento.html", contexto)
+
+
+@login_required
+def atualiza_movimento(request, id):
+    if request.user.is_staff:
+        obj = Movimento.objects.get(id=id)
+        form = FormMovimento(request.POST or None, instance=obj)
+        contexto = {'form': form, 'acao': 'Atualiza Movimento', 'titulo': 'AtuMov:G4car'}
+        if form.is_valid():
+
+            form.save()
+            return redirect('url_listagem_movimento')
+        else:
+            return render(request, 'core/cadastro_movimento.html', contexto)
+
+    else:
+        contexto = {'erro' : 'Voçe não tem permição procure o gerente'}
+        return render(request, 'core/erro.html', contexto)

@@ -16,13 +16,13 @@ class FormVeiculo(ModelForm):
 
 class FormParametro(ModelForm):
     class Meta:
-        models = Parametro
+        model = Parametro
         fields = '__all__'
 
 
 class FormMovimento(ModelForm):
     class Meta:
-        models = Movimento
+        model = Movimento
         fields = '__all__'
 
 

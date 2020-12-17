@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    ListagemMov:G4car
+{% endblock %}
+
+
+{% block main %}
+    <h3>Lista de Movimentos</h3>
+    {% for mov in movimento %}
+        data entrada : {{ mov.data_entrada }} <br>
+        Data saida : {{ mov.data_saida }} <br>
+            <a href="{% url 'url_atualiza_movimento' mov.id %}">Editar</a> <br>
+        Veiculo: {{ mov_veicilo.placa }} <br>
+        Valor: {{ mov.valor_hora.valor }} <br>
+        Total: {{ mov.total }} <br>
+        _____________________________________________________________<br>
+    {% endfor %}
+
+
+
+{% endblock %}
