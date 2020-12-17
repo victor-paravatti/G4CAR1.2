@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Cadastro-Cliente
+{% endblock %}
+
+{% block main %}
+    <h3>{acao}</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Salvar</button> &nbsp;
+        <button type="button" onclick="location.href='/'">Cancelar</button>
+
+    </form>
+
+
+
+{% endblock %}

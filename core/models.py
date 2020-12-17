@@ -56,7 +56,7 @@ class Movimento(models.Model):
     total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
     def __str__(self):
-        f'{self.id} - {self.data_entrada} - {self.id_veiculo.placa}'
+        return f'{self.id} - {self.data_entrada} - {self.id_veiculo.placa}'
 
     class Meta:
         verbose_name_plural = 'Movimentos'
@@ -68,9 +68,8 @@ class Mensalista(models.Model):
     id_veiculo = models.ForeignKey('Veiculo', on_delete=models.CASCADE)
 
     def __str__(self):
-        f'{self.id_veiculo} - {self.id_veiculo.modelo} - ({self.mensalidade.valor})'
+        return f'{self.id_veiculo} - {self.id_veiculo.modelo} - ({self.mensalidade.valor})'
 
     class Meta:
         verbose_name_plural = 'Mensalistas'
-    
-    
+ 
