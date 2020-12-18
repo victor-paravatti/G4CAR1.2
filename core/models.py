@@ -1,4 +1,5 @@
 from django.db import models
+from math import ceil
 
 # Create your models here.
 
@@ -42,7 +43,7 @@ class Parametro(models.Model):
     valor = models.DecimalField(max_digits=7, decimal_places=2)
 
     def __str__(self):
-        return self.descricao
+        return self.descricao + '('+str(self.valor)+')'
 
     class Meta:
         verbose_name_plural = "Parâmetros"
@@ -60,6 +61,17 @@ class Movimento(models.Model):
 
     class Meta:
         verbose_name_plural = 'Movimentos'
+
+    # regra de negocio para calcular o total baseado no Checkout  
+    def calcula_total(self):
+        if self.data_saida:
+            horas = ceil((self.data_saida - self.data_entrada).total_seconds() / 3600)
+            obj = Parametro.objects.get(id=self.valor_hora.pk)
+            self.total = horas * obj.valor
+            return self.total
+        
+        return 0.0
+
 
 
 class Mensalista(models.Model):

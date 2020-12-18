@@ -12,7 +12,7 @@
         data entrada : {{ mov.data_entrada }} <br>
         Data saida : {{ mov.data_saida }} <br>
             <a href="{% url 'url_atualiza_movimento' mov.id %}">Editar</a> <br>
-        Veiculo: {{ mov_veicilo.placa }} <br>
+        Veiculo: {{ mov.veicilo.placa }} <br>
         Valor: {{ mov.valor_hora.valor }} <br>
         Total: {{ mov.total }} <br>
         _____________________________________________________________<br>

@@ -170,7 +170,7 @@ def atualiza_movimento(request, id):
         form = FormMovimento(request.POST or None, instance=obj)
         contexto = {'form': form, 'acao': 'Atualiza Movimento', 'titulo': 'AtuMov:G4car'}
         if form.is_valid():
-
+            obj.calcula_total()
             form.save()
             return redirect('url_listagem_movimento')
         else:
