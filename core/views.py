@@ -170,7 +170,7 @@ def atualiza_movimento(request, id):
         form = FormMovimento(request.POST or None, instance=obj)
         contexto = {'form': form, 'acao': 'Atualiza Movimento', 'titulo': 'AtuMov:G4car'}
         if form.is_valid():
-            if obj.calcula_total() >= 0.0:
+            if obj.calcula_total() > 0.0:
                 form.save()
                 return redirect('url_listagem_movimento')
             else:
@@ -180,5 +180,5 @@ def atualiza_movimento(request, id):
             return render(request, 'core/cadastro_movimento.html', contexto)
 
     else:
-        contexto = {'erro' : 'Voçe não tem permição procure o gerente'}
+        contexto = {'erro': 'Voçe não tem permição procure o gerente'}
         return render(request, 'core/erro.html', contexto)
