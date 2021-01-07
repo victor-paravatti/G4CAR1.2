@@ -1,0 +1,14 @@
+{
+    "python.pythonPath": "venv\\Scripts\\python.exe",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "python.autoComplete.extraPaths": [
+    
+    ],
+    "python.analysis.extraPaths": [],
+    "git.ignoreLimitWarning": true
+}
