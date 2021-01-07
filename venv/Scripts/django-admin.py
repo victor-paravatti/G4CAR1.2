@@ -1,4 +1,4 @@
-#!c:\users\guibi\onedrive\área de trabalho\g4car\venv\scripts\python.exe
+#!c:\users\guibi\onedrive\área de trabalho\documentos facul\g4car aula19-11\venv\scripts\python.exe
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

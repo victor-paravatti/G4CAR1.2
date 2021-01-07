@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\guibi\OneDrive\Área de Trabalho\G4CAR\venv"
+VIRTUAL_ENV="C:\Users\guibi\OneDrive\Área de Trabalho\Documentos facul\G4CAR Aula19-11\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
